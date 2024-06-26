@@ -15,7 +15,7 @@ function Navbar() {
       {currentUser ? (
         <>
           <button onClick={handleLogout}>Logout</button>
-          <h2>{currentUser?.username}</h2>
+          <Link to="/profile"><h2>{currentUser?.username}</h2></Link>
         </>
       ) : (
         <>

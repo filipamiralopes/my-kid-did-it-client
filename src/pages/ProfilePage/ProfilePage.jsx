@@ -2,7 +2,7 @@ import "./ProfilePage.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
-import {SERVER_URL} from "../../config"
+import { SERVER_URL } from "../../config";
 
 function ProfilePage() {
   const [profileUser, setProfileUser] = useState(null);
@@ -12,21 +12,23 @@ function ProfilePage() {
     axios
       .get(`${SERVER_URL}/auth/profile/${currentUser._id}`)
       .then((res) => {
-        console.log("here is the profile response: ", res);
-        setProfileUser(res.data)
+        setProfileUser(res.data);
       })
       .catch((err) => console.log(err));
   }, [currentUser]);
 
-  if(!profileUser) {
-    return <p>Loading...</p>
+  if (!profileUser) {
+    return <p>Loading...</p>;
   }
-
 
   return (
     <div>
-      <h1>Profile page of {profileUser?.username}</h1> 
-      <img src={profileUser?.userImage} alt={profileUser?.username} style={{ height: "250px" }}/>
+      <h1>Profile page of {profileUser?.username}</h1>
+      <img
+        src={profileUser?.userImage}
+        alt={profileUser?.username}
+        style={{ height: "250px" }}
+      />
     </div>
   );
 }

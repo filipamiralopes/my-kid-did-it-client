@@ -7,6 +7,7 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
+import CanvasPage from "./pages/CanvasPage/CanvasPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/canvas" element={<IsPrivate><CanvasPage /></IsPrivate>} />
       </Routes>
     </div>
   );

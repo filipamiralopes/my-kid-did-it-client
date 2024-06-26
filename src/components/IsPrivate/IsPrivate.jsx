@@ -10,8 +10,6 @@ const IsPrivate = ({ children }) => {
     return <p>Is Loading...</p>;
   }
 
-  console.log("Here is the Private Page", isLoading, isLoggedIn);
-
   if (!isLoggedIn) {
     return <Navigate to="/login" />;
   }
