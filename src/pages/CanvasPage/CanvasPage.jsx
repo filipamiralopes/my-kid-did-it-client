@@ -23,13 +23,15 @@ function CanvasPage() {
       .exportImage("png")
       .then((file) => {
         
-        const drawingFormData = new FormData();
-        drawingFormData.append("title", title);
-        drawingFormData.append("author", currentUser._id); // profileUser id
-        drawingFormData.append("drawingUrl", file);
+        // const drawingFormData = new FormData();
+        // drawingFormData.append("title", title);
+        // drawingFormData.append("author", currentUser._id); // profileUser id
+        // drawingFormData.append("drawingUrl", file);
+
+        const requestBody = { title, author:currentUser._id, drawingData: file};
 
         axios
-          .post(`${SERVER_URL}/api/drawings/upload`, drawingFormData)
+          .post(`${SERVER_URL}/api/drawings/upload`, requestBody)
           .then(() => {
             //   nav("/login");
             console.log("Drawing uploaded!");
