@@ -22,7 +22,7 @@ const AuthContextWrapper = ({ children }) => {
         `${SERVER_URL}/auth/verify`,
         { headers: { authorization: `Bearer ${tokenFromStorage}` } }
       );
-      console.log("Response from verify: ", data);
+      // console.log("Response from verify: ", data);
       setCurrentUser(data.user);
       setIsLoading(false);
       setIsLoggedIn(true);
