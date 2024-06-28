@@ -3,8 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 import { SERVER_URL } from "../../config";
+import Drawingcard from "../../components/DrawingCard/DrawingCard";
 
-function ProfilePage() {
+function ProfilePage({ drawings }) {
   const [profileUser, setProfileUser] = useState(null);
   const { currentUser } = useContext(AuthContext);
 
@@ -29,6 +30,12 @@ function ProfilePage() {
         alt={profileUser?.username}
         style={{ height: "250px" }}
       />
+      <div className="drawings-container">
+        {drawings &&
+          drawings.map((oneDraw) => {
+            return <Drawingcard key={oneDraw._id} drawing={oneDraw} />;
+          })}
+      </div>
     </div>
   );
 }

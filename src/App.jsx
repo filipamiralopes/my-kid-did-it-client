@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import Navbar from "./components/Navbar/Navbar";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -8,8 +9,25 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
 import CanvasPage from "./pages/CanvasPage/CanvasPage";
+import { SERVER_URL } from "./config";
+import { AuthContext } from "./context/auth.context";
 
 function App() {
+  const {currentUser} = useContext(AuthContext)
+  const [drawings, setDrawings] = useState([]); // move to profile page?
+
+  useEffect(() => { // move to profile page?
+    const fetchUserDrawings = async () => {
+      try {
+        const { data } = await axios.get(`${SERVER_URL}/api/drawings//user/${currentUser?._id}`);
+        setDrawings(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserDrawings();
+  }, [currentUser]);
+
   return (
     <div className="App">
       <Navbar />
@@ -20,7 +38,7 @@ function App() {
           path="/profile"
           element={
             <IsPrivate>
-              <ProfilePage />
+              <ProfilePage drawings={drawings}/>
             </IsPrivate>
           }
         />
