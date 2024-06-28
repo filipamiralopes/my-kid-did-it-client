@@ -31,8 +31,8 @@ function CanvasPage() {
           })
           .catch((err) => console.log(err));
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
