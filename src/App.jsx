@@ -18,7 +18,6 @@ import PreviewPage from "./pages/PreviewPage/PreviewPage";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-  const [drawings, setDrawings] = useState([]);
   const [orders, setOrders] = useState([]);
   const [currentOrder, setCurrentOrder] = useState(null);
   const [profileUser, setProfileUser] = useState(null);
@@ -30,20 +29,6 @@ function App() {
         setProfileUser(res.data);
       })
       .catch((err) => console.log(err));
-  }, [currentUser]);
-
-  useEffect(() => {
-    const fetchUserDrawings = async () => {
-      try {
-        const { data } = await axios.get(
-          `${SERVER_URL}/api/drawings/user/${currentUser?._id}`
-        );
-        setDrawings(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchUserDrawings();
   }, [currentUser]);
 
   return (
@@ -64,7 +49,7 @@ function App() {
           path="/drawings"
           element={
             <IsPrivate>
-              <UserDrawingsPage drawings={drawings} setCurrentOrder={setCurrentOrder} />
+              <UserDrawingsPage currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
             </IsPrivate>
           }
         />

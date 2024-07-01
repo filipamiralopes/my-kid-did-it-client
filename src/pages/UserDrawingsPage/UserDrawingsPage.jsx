@@ -3,8 +3,26 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
 import Drawingcard from "../../components/DrawingCard/DrawingCard";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { SERVER_URL } from "../../config";
 
-function UserDrawingsPage({ drawings, currentOrder, setCurrentOrder }) {
+function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
+  const [drawings, setDrawings] = useState([]);
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchUserDrawings = async () => {
+      try {
+        const { data } = await axios.get(
+          `${SERVER_URL}/api/drawings/user/${currentUser?._id}`
+        );
+        setDrawings(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserDrawings();
+  }, [currentUser]);
   return (
     <div>
       {drawings.length === 0 ? (
