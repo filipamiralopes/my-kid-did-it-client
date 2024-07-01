@@ -11,7 +11,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import CanvasPage from "./pages/CanvasPage/CanvasPage";
 import { SERVER_URL } from "./config";
 import { AuthContext } from "./context/auth.context";
-import DrawingsPage from "./pages/UserDrawingsPage/UserDrawingsPage";
+import UserDrawingsPage from "./pages/UserDrawingsPage/UserDrawingsPage";
 import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
 import ToOrderPage from "./pages/ToOrderPage/ToOrderPage";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
@@ -64,7 +64,7 @@ function App() {
           path="/drawings"
           element={
             <IsPrivate>
-              <DrawingsPage drawings={drawings} setCurrentOrder={setCurrentOrder} />
+              <UserDrawingsPage drawings={drawings} setCurrentOrder={setCurrentOrder} />
             </IsPrivate>
           }
         />

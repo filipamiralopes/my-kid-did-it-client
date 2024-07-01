@@ -14,12 +14,17 @@ const styles = {
 function CanvasPage() {
   const { currentUser } = useContext(AuthContext);
   const [title, setTitle] = useState("");
+  const [error, setError] = useState(null);
   const canvas = useRef();
   const nav = useNavigate();
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleUploadDrawing = (e) => {
     e.preventDefault();
+
+    if(!title) {
+      setError("Give a title to your kiddo's work of art")
+    }
 
     canvas.current
       .exportImage("png")
@@ -33,9 +38,6 @@ function CanvasPage() {
           })
           .catch((err) => console.log(err));
       })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   return (
@@ -52,6 +54,7 @@ function CanvasPage() {
       <label>Title:</label>
       <input type="text" name="title" value={title} onChange={handleTitle} />
       <button onClick={handleUploadDrawing}>Save</button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }

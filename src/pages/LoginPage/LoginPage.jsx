@@ -28,7 +28,7 @@ function LoginPage() {
         console.log("Response from login: ", data);
         storeToken(data.authToken);
         await authenticateUser();
-        nav("/profile");
+        nav("/drawings");
       } catch (error) {
         console.log(error);
       }
