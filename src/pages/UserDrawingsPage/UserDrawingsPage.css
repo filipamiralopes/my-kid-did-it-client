@@ -1,0 +1,14 @@
+.drawings-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.drawings-container div:hover {
+  /* the parent */
+  transform: scale(1.06);
+}
+
+.drawings-container div:hover * {
+  /* the children */
+  transform: scale(1.06);
+}

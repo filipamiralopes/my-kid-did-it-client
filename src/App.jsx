@@ -11,13 +11,16 @@ import HomePage from "./pages/HomePage/HomePage";
 import CanvasPage from "./pages/CanvasPage/CanvasPage";
 import { SERVER_URL } from "./config";
 import { AuthContext } from "./context/auth.context";
-import DrawingsPage from "./pages/DrawingsPage/DrawingsPage";
-import OrdersPage from "./pages/OrdersPage/OrdersPage";
+import DrawingsPage from "./pages/UserDrawingsPage/UserDrawingsPage";
+import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
+import ToOrderPage from "./pages/ToOrderPage/ToOrderPage";
+import PreviewPage from "./pages/PreviewPage/PreviewPage";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
   const [drawings, setDrawings] = useState([]);
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState([]);
+  const [currentOrder, setCurrentOrder] = useState(null);
   const [profileUser, setProfileUser] = useState(null);
 
   useEffect(() => {
@@ -33,7 +36,7 @@ function App() {
     const fetchUserDrawings = async () => {
       try {
         const { data } = await axios.get(
-          `${SERVER_URL}/api/drawings//user/${currentUser?._id}`
+          `${SERVER_URL}/api/drawings/user/${currentUser?._id}`
         );
         setDrawings(data);
       } catch (error) {
@@ -61,7 +64,7 @@ function App() {
           path="/drawings"
           element={
             <IsPrivate>
-              <DrawingsPage drawings={drawings} />
+              <DrawingsPage drawings={drawings} setCurrentOrder={setCurrentOrder} />
             </IsPrivate>
           }
         />
@@ -69,7 +72,23 @@ function App() {
           path="/orders"
           element={
             <IsPrivate>
-              <OrdersPage orders={orders}/>
+              <UserOrdersPage orders={orders} />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <IsPrivate>
+              <ToOrderPage currentOrder={currentOrder} setCurrentOrder={setCurrentOrder}/>
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/preview"
+          element={
+            <IsPrivate>
+              <PreviewPage currentOrder={currentOrder}/>
             </IsPrivate>
           }
         />

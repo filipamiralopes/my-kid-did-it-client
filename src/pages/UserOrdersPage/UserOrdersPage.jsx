@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const OrdersPage = ({ orders }) => {
+const UserOrdersPage = ({ orders }) => {
   return (
     <div>
       {orders.length === 0 ? (
         <h1>
           No orders yet<br/>
-          <Link to="/canvas">
-            <span>Start Drawing!</span>
+          <Link to="/drawings">
+            <span>Choose a Drawing</span>
           </Link>
         </h1>
       ) : (
@@ -18,4 +18,4 @@ const OrdersPage = ({ orders }) => {
   );
 };
 
-export default OrdersPage;
+export default UserOrdersPage;
