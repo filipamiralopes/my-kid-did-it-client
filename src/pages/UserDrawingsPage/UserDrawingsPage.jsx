@@ -10,6 +10,17 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
   const [drawings, setDrawings] = useState([]);
   const { currentUser } = useContext(AuthContext);
 
+  const handleDelete = async (id) => {
+    try {  
+      await axios.delete(`${SERVER_URL}/api/drawings/${id}`);
+      setDrawings(drawings.filter(drawing => drawing._id !== id));
+      console.log(`Drawing with id ${id} was deleted`)
+    } catch (error) {
+      console.log( error);
+      
+    }
+  }
+
   useEffect(() => {
     const fetchUserDrawings = async () => {
       try {
@@ -23,6 +34,7 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
     };
     fetchUserDrawings();
   }, [currentUser]);
+
   return (
     <div>
       {drawings.length === 0 ? (
@@ -42,7 +54,7 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
           <div className="drawings-container">
             {drawings &&
               drawings.map((oneDraw) => {
-                return <Drawingcard key={oneDraw._id} drawing={oneDraw} currentOrder={currentOrder} setCurrentOrder={setCurrentOrder}/>;
+                return <Drawingcard key={oneDraw._id} drawing={oneDraw} currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} handleDelete={handleDelete}/>;
               })}
           </div>
         </>

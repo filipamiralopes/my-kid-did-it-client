@@ -11,7 +11,7 @@ import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 import { SERVER_URL } from "../../config";
 
-export default function Drawingcard({ drawing, setCurrentOrder }) {
+export default function Drawingcard({ drawing, setCurrentOrder, handleDelete }) {
   const { currentUser } = useContext(AuthContext);
   const parsedDate = new Date(drawing.createdAt);
   const nav = useNavigate();
@@ -56,9 +56,15 @@ export default function Drawingcard({ drawing, setCurrentOrder }) {
           Order
         </Button>
         <Button size="small">
-          <a href={drawing.file.replace("/upload/", "/upload/fl_attachment/")} download>
+          <a
+            href={drawing.file.replace("/upload/", "/upload/fl_attachment/")}
+            download
+          >
             Download
           </a>
+        </Button>
+        <Button onClick={() => handleDelete(drawing._id)}>
+          Delete
         </Button>
       </CardActions>
     </Card>
