@@ -2,7 +2,7 @@ import "./CanvasPage.css";
 import { useContext, useRef, useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import { AuthContext } from "../../context/auth.context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ const styles = {
 };
 
 function CanvasPage() {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, isLoggedIn } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [error, setError] = useState(null);
   const [strokeColor, setStrokeColor] = useState("#000000");
@@ -22,6 +22,10 @@ function CanvasPage() {
 
   const canvas = useRef();
   const nav = useNavigate();
+
+  if (!isLoggedIn || !currentUser) {
+    return <Navigate to="/login" />;
+  }
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleUploadDrawing = (e) => {
