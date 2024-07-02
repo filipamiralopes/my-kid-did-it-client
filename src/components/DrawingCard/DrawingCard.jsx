@@ -11,7 +11,7 @@ import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 import { SERVER_URL } from "../../config";
 
-export default function Drawingcard({ drawing, setCurrentOrder  }) {
+export default function Drawingcard({ drawing, setCurrentOrder }) {
   const { currentUser } = useContext(AuthContext);
   const parsedDate = new Date(drawing.createdAt);
   const nav = useNavigate();
@@ -27,8 +27,8 @@ export default function Drawingcard({ drawing, setCurrentOrder  }) {
     };
     axios
       .post(`${SERVER_URL}/api/orders`, requestBody)
-      .then(({data}) => {
-        setCurrentOrder(data)
+      .then(({ data }) => {
+        setCurrentOrder(data);
         console.log("Order created!");
       })
       .catch((err) => console.log(err));
@@ -36,7 +36,7 @@ export default function Drawingcard({ drawing, setCurrentOrder  }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 260 }} id="drawing-card">
+    <Card sx={{ maxWidth: 260, width: 300 }} id="drawing-card">
       <CardMedia
         component="img"
         alt={`${drawing.title} drawing`}
@@ -55,7 +55,11 @@ export default function Drawingcard({ drawing, setCurrentOrder  }) {
         <Button size="small" onClick={handleChooseProduct}>
           Order
         </Button>
-        <Button size="small">Download</Button>
+        <Button size="small">
+          <a href={drawing.file.replace("/upload/", "/upload/fl_attachment/")} download>
+            Download
+          </a>
+        </Button>
       </CardActions>
     </Card>
   );

@@ -36,6 +36,9 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
       ) : (
         <>
           <h1>Your Kid Did It </h1>
+          <Link to="/canvas">
+            <span>+ Add new drawing</span>
+          </Link>
           <div className="drawings-container">
             {drawings &&
               drawings.map((oneDraw) => {
