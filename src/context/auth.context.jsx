@@ -31,12 +31,12 @@ const AuthContextWrapper = ({ children }) => {
       setCurrentUser(null);
       setIsLoading(false);
       setIsLoggedIn(false);
-      nav("/login");
+      nav("/");
     }
   };
   const handleLogout = () => {
+    nav("/");
     localStorage.removeItem("authToken");
-    nav("/login");
     setCurrentUser(null);
     console.log("User was logged out successfully");
   };

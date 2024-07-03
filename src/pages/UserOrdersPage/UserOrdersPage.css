@@ -1,0 +1,19 @@
+.orders-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 50px;
+    margin-top: 20px;
+  }
+  
+  .orders-container div:hover {
+    /* the parent */
+    transform: scale(1.02);
+  }
+  
+  .orders-container div:hover * {
+    /* the children */
+    transform: scale(1.02);
+  }
+  

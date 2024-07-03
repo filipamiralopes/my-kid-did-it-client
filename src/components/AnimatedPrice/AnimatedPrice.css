@@ -1,0 +1,23 @@
+.animated-text {
+    /* position: fixed;
+    top: 50%;
+    left: 50%; */
+    margin-top: 35px;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #000000;
+    opacity: 0;
+    animation: fadeOutUp 2s ease-out forwards;
+    text-wrap: none;
+  }
+  
+  @keyframes fadeOutUp {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -100%);
+    }
+  }
