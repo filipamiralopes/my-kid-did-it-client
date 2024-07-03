@@ -89,7 +89,7 @@ function App() {
           path="/wall-of-love"
           element={
             <IsPrivate>
-              <WallOfLovePage />
+              <WallOfLovePage currentOrder={currentOrder} />
             </IsPrivate>
           }
         />
