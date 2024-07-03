@@ -59,7 +59,7 @@ export default function ToOrderPage({ currentOrder, setCurrentOrder }) {
               <MenuItem value={"tshirt"}>Tshirt</MenuItem>
               <MenuItem value={"mug"}>Mug</MenuItem>
               <MenuItem value={"toe_bag"}>Tote Bag</MenuItem>
-              <MenuItem value={"beani"}>Beani</MenuItem>
+              <MenuItem value={"beani"}>Beanie</MenuItem>
             </Select>
           </FormControl>
         </Box>
