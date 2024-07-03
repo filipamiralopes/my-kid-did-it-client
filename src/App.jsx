@@ -23,12 +23,14 @@ function App() {
   const [profileUser, setProfileUser] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`${SERVER_URL}/auth/profile/${currentUser?._id}`)
-      .then((res) => {
-        setProfileUser(res.data);
-      })
-      .catch((err) => console.log(err));
+    if (currentUser?._id) {
+      axios
+        .get(`${SERVER_URL}/auth/profile/${currentUser?._id}`)
+        .then((res) => {
+          setProfileUser(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [currentUser]);
 
   return (
@@ -49,7 +51,10 @@ function App() {
           path="/drawings"
           element={
             <IsPrivate>
-              <UserDrawingsPage currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
+              <UserDrawingsPage
+                currentOrder={currentOrder}
+                setCurrentOrder={setCurrentOrder}
+              />
             </IsPrivate>
           }
         />
@@ -65,7 +70,10 @@ function App() {
           path="/products"
           element={
             <IsPrivate>
-              <ToOrderPage currentOrder={currentOrder} setCurrentOrder={setCurrentOrder}/>
+              <ToOrderPage
+                currentOrder={currentOrder}
+                setCurrentOrder={setCurrentOrder}
+              />
             </IsPrivate>
           }
         />
@@ -73,7 +81,7 @@ function App() {
           path="/preview"
           element={
             <IsPrivate>
-              <PreviewPage currentOrder={currentOrder}/>
+              <PreviewPage currentOrder={currentOrder} />
             </IsPrivate>
           }
         />
