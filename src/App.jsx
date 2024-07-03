@@ -15,6 +15,7 @@ import UserDrawingsPage from "./pages/UserDrawingsPage/UserDrawingsPage";
 import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
 import ToOrderPage from "./pages/ToOrderPage/ToOrderPage";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
+import WallOfLovePage from "./pages/WallOfLovePage/WallOfLovePage";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -74,6 +75,14 @@ function App() {
           element={
             <IsPrivate>
               <PreviewPage currentOrder={currentOrder}/>
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/wall-of-love"
+          element={
+            <IsPrivate>
+              <WallOfLovePage />
             </IsPrivate>
           }
         />

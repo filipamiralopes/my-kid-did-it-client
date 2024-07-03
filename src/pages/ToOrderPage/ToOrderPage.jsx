@@ -4,7 +4,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
 import { useState, useContext } from "react";
 import tshirtImg from "../../assets/white_tshirt.png";
 import mugImg from "../../assets/mug.png";
@@ -85,16 +84,6 @@ export default function ToOrderPage({ currentOrder, setCurrentOrder }) {
             <h3>Product price: € 11.30 </h3>
           </div>
         ) : null}
-        {/* <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField id="outlined-basic" label="Shipping Address" variant="outlined" />
-      </Box> */}
         {product ? (
           <Button variant="contained" type="submit">
             Preview
