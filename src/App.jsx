@@ -19,7 +19,6 @@ import WallOfLovePage from "./pages/WallOfLovePage/WallOfLovePage";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-  const [orders, setOrders] = useState([]);
   const [currentOrder, setCurrentOrder] = useState(null);
   const [profileUser, setProfileUser] = useState(null);
 
@@ -58,7 +57,7 @@ function App() {
           path="/orders"
           element={
             <IsPrivate>
-              <UserOrdersPage orders={orders} />
+              <UserOrdersPage />
             </IsPrivate>
           }
         />
