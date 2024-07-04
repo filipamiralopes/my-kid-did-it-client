@@ -44,16 +44,20 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #535BF1;
+  background-color: #ffeda0;
   cursor: pointer;
   transition: border-color 0.25s;
+  box-shadow: 1px 3px #213547; 
+  border: 1px solid #213547; 
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #213547;
+  cursor: pointer;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+body button:active {
+  box-shadow: 0 5px #213547;
+  transform: translateY(4px);
 }
 
 @media (prefers-color-scheme: light) {
@@ -64,7 +68,7 @@ button:focus-visible {
   a:hover {
     text-decoration: none;
   }
-  button {
+  /* button {
     background-color: #f9f9f9;
-  }
+  } */
 }

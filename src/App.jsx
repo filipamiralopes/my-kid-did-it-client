@@ -16,6 +16,7 @@ import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
 import ToOrderPage from "./pages/ToOrderPage/ToOrderPage";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
 import WallOfLovePage from "./pages/WallOfLovePage/WallOfLovePage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -103,6 +104,7 @@ function App() {
             </IsPrivate>
           }
         />
+        <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
     </div>
   );

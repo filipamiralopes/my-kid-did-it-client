@@ -1,0 +1,9 @@
+.not-found-page{
+    min-height: 100vh;
+    margin-top: 50px;
+}
+
+.not-found-page h1{
+    padding: 0;
+    margin: 0;
+}

@@ -116,7 +116,7 @@ function ResponsiveAppBar({ profileUser }) {
             ) : (
               <Button
                 onClick={handleNavigateToLogin}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "#242424", display: "block" }}
               >
                 LOGIN
               </Button>
