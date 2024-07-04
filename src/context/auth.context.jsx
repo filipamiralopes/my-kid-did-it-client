@@ -34,19 +34,16 @@ const AuthContextWrapper = ({ children }) => {
     }
   };
   const handleLogout = async () => {
-
+    nav("/");
     // clear unfulfilled orders
     try {
-      await axios.delete(
-        `${SERVER_URL}/api/orders/user/${currentUser?._id}`
-      );
+      await axios.delete(`${SERVER_URL}/api/orders/user/${currentUser?._id}`);
     } catch (error) {
       console.log(error);
     }
-
-    nav("/");
     localStorage.removeItem("authToken");
     setCurrentUser(null);
+
     console.log("User was logged out successfully");
   };
 

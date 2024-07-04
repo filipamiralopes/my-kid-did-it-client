@@ -29,7 +29,7 @@ export default function OrderCard({ order }) {
   }, [currentUser]);
 
   return (
-    <Card sx={{ maxWidth: 300, width: 300, maxHeight: 300, p: 1}} >
+    <Card sx={{ maxWidth: 300, width: 300, p: 1}} >
       <CardMedia
         component="img"
         alt={`${order.product}`}

@@ -30,7 +30,8 @@ function LoginPage() {
         await authenticateUser();
         nav("/drawings");
       } catch (error) {
-        console.log(error);
+        const errorDescription = error.response.data.errorMessage;
+        setErrorMessage(errorDescription);
       }
     };
     login();
@@ -54,7 +55,7 @@ function LoginPage() {
 
         <button type="submit">Login</button>
       </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>
