@@ -15,6 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const pages = ["About Us"];
 const settings = ["Your Profile", "Your Drawings", "Your Orders", "Logout"];
@@ -62,7 +63,7 @@ function ResponsiveAppBar({ profileUser }) {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: "#ffeda0" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* ABOUT US */}
@@ -71,7 +72,7 @@ function ResponsiveAppBar({ profileUser }) {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "#242424", display: "block" }}
               >
                 {page}
               </Button>
@@ -86,17 +87,22 @@ function ResponsiveAppBar({ profileUser }) {
               component="a"
               href="/"
               sx={{
-                mr: 2,
+                mr: 1.2,
+                mt: 0.3,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "#242424",
                 textDecoration: "none",
+                "&:hover": {
+                  textDecoration: "underline",
+                },
               }}
             >
               MY KID DID IT
             </Typography>
+            <img src={logo} style={{width: "35px"}} />
           </Box>
 
           {/* USER ICON / LOGIN */}

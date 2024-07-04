@@ -28,12 +28,11 @@ const WallOfLovePage = ({ currentOrder }) => {
 
       <div className="wall-of-love">
         <h1>
-          {" "}
           Their kids <br />
           did it
         </h1>
         {reviews.map((img) => {
-          return <img src={img} style={{ width: "330px" }} />;
+          return <img src={img} key={img} style={{ width: "330px" }} />;
         })}
       </div>
     </div>
