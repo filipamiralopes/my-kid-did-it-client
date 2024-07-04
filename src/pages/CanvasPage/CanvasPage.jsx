@@ -71,7 +71,7 @@ function CanvasPage() {
   return (
     <>
       <div className="canvas-container">
-        <ReactSketchCanvas
+        <ReactSketchCanvas id="canvas"
           ref={canvas}
           style={styles}
           width="350px"
