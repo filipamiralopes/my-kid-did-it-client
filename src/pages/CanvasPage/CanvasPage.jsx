@@ -71,8 +71,19 @@ function CanvasPage() {
   return (
     <>
       <div className="canvas-container">
-        <h1>Let the pencil flow</h1>
-        <ReactSketchCanvas id="canvas"
+        <div className="canvas-headers">
+          <h1>
+            Let the pencil <br />
+            flow
+          </h1>
+          <p>
+            Use the tools on the right of the canvas to control pencil and
+            background color.
+          </p>
+        </div>
+        <div></div>
+        <ReactSketchCanvas
+          id="canvas"
           ref={canvas}
           style={styles}
           width="350px"
@@ -83,6 +94,7 @@ function CanvasPage() {
         <div className="canvas-tools">
           <label htmlFor="color"></label>
           <input
+            title="Pencil color"
             className="stroke-color"
             type="color"
             value={strokeColor}
@@ -90,6 +102,7 @@ function CanvasPage() {
           />
           <label htmlFor="color"></label>
           <input
+            title="Canvas color"
             className="canvas-color"
             type="color"
             value={canvasColor}
@@ -118,8 +131,8 @@ function CanvasPage() {
               onChange={handleTitle}
             />
             <button onClick={handleUploadDrawing}>Save</button>
-            {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
       </div>
     </>

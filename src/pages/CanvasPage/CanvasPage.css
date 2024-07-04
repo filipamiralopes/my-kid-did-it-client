@@ -1,12 +1,31 @@
+.canvas-headers {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  min-height: 40vh;
+  max-width: 25vw;
+  padding: 40px;
+  margin: 0 50px 0 50px;
+  text-wrap: pretty;
+}
+.canvas-headers h1 {
+  margin-bottom: 2px;
+}
+.canvas-headers p {
+  font-size: 20px;
+}
+
 .canvas-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 80px 0 0 310px;
+  /* margin: 80px 0 0 310px; */
+  margin-top: 50px;
 }
 
-#canvas{
-  cursor: url("https://res.cloudinary.com/dzymhjyvm/image/upload/v1720088277/pencil_xhywj4.png"), auto;
+#canvas {
+  cursor: url("https://res.cloudinary.com/dzymhjyvm/image/upload/v1720088277/pencil_xhywj4.png"),
+    auto;
 }
 
 .canvas-tools {
