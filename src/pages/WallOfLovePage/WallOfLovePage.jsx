@@ -21,9 +21,20 @@ const WallOfLovePage = ({ currentOrder }) => {
         <h2>Your order is on the way!</h2>
         <FontAwesomeIcon icon={faTruckFast} fontSize={"130px"} />
         <p>Order number: #11996578 </p>
-        <Button variant="contained" type="submit" onClick={() => window.open("https://www.dhl.de/en/privatkunden/dhl-sendungsverfolgung.html", '_blank')} >
+        <button
+          onClick={() =>
+            window.open(
+              "https://www.dhl.de/en/privatkunden/dhl-sendungsverfolgung.html",
+              "_blank"
+            )
+          }
+        >
           Track my package
-        </Button>
+        </button>
+      </div>
+
+      <div>
+        <hr />
       </div>
 
       <div className="wall-of-love">
