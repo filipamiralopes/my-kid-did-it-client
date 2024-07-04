@@ -25,18 +25,20 @@ const UserOrdersPage = () => {
   }, [currentUser]);
 
   return (
-    <div>
+    <div >
       {orders.length === 0 ? (
-        <h1>
-          No orders yet
-          <br />
+        <>
+          <h1>
+            No orders yet
+            <br />
+          </h1>
           <Link to="/drawings">
-            <span>Choose a Drawing</span>
+            <button>Choose a Drawing</button>
           </Link>
-        </h1>
+        </>
       ) : (
         <>
-        <h1>Your orders</h1>
+          <h1>Your orders</h1>
           <div className="orders-container">
             {orders &&
               orders.map((oneOrder) => {

@@ -1,11 +1,14 @@
 import "./ProfilePage.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
+import Spinner from "../../components/Spinner/Spinner";
 
 function ProfilePage({profileUser}) {
 
+  profileUser = null;
+
   if (!profileUser) {
-    return <p>Loading...</p>;
+    return <Spinner/>; 
   }
 
   return (

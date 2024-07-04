@@ -1,5 +1,5 @@
 import "./HomePage.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
@@ -34,7 +34,6 @@ const steps = [
 ];
 
 const HomePage = () => {
-  const nav = useNavigate();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = steps.length;
@@ -56,7 +55,9 @@ const HomePage = () => {
             with custom prints
           </p>
           <div className="start-drawing-button">
-            <button onClick={() => nav("/canvas")}>Start drawing</button>
+            <Link to="/canvas">
+              <button>Start drawing</button>
+            </Link>
           </div>
         </div>
         <div className="carousel">
@@ -96,6 +97,7 @@ const HomePage = () => {
                   size="small"
                   onClick={handleNext}
                   disabled={activeStep === maxSteps - 1}
+                  sx={{ color: "#242424"}}
                 >
                   Next
                   {theme.direction === "rtl" ? (
@@ -110,6 +112,7 @@ const HomePage = () => {
                   size="small"
                   onClick={handleBack}
                   disabled={activeStep === 0}
+                  sx={{ color: "#242424"}}
                 >
                   {theme.direction === "rtl" ? (
                     <KeyboardArrowRight />

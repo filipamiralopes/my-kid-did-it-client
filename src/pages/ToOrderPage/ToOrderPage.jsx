@@ -9,15 +9,15 @@ import tshirtImg from "../../assets/white_tshirt.png";
 import mugImg from "../../assets/mug.png";
 import toeBagImg from "../../assets/toe_bag.png";
 import beaniImg from "../../assets/beani.png";
-import Button from "@mui/material/Button";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 import { SERVER_URL } from "../../config";
 import { useNavigate } from "react-router-dom";
+import productsImg from "../../assets/products.jpeg";
 
 export default function ToOrderPage({ currentOrder, setCurrentOrder }) {
   const { currentUser } = useContext(AuthContext);
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState("tshirt");
   const nav = useNavigate();
 
   const handleChange = (event) => {
@@ -35,9 +35,9 @@ export default function ToOrderPage({ currentOrder, setCurrentOrder }) {
     };
     axios
       .put(`${SERVER_URL}/api/orders`, requestBody)
-      .then(({data}) => {
+      .then(({ data }) => {
         console.log("Order updated!");
-        setCurrentOrder(data)
+        setCurrentOrder(data);
       })
       .catch((err) => console.log(err));
     nav("/preview");
@@ -65,29 +65,36 @@ export default function ToOrderPage({ currentOrder, setCurrentOrder }) {
         </Box>
         {product === "tshirt" ? (
           <div className="which-product">
-            <img src={tshirtImg} style={{ width: "370px" }} />
-            <h3>Product price: € 19.50 </h3>
+            <img src={tshirtImg} style={{ width: "370px" }}/>
+            <div className="tshirt">
+              <h3>Product price: € 19.50 </h3>
+              <button type="submit">Preview</button>
+            </div>
           </div>
         ) : product === "mug" ? (
           <div className="which-product">
             <img src={mugImg} style={{ width: "300px" }} />
-            <h3>Product price: € 7.50 </h3>
+            <div>
+              <h3>Product price: € 7.50 </h3>
+              <button type="submit">Preview</button>
+            </div>
           </div>
         ) : product === "toe_bag" ? (
           <div className="which-product">
             <img src={toeBagImg} style={{ width: "400px" }} />
-            <h3>Product price: € 11.50 </h3>
+            <div>
+              <h3>Product price: € 11.50 </h3>
+              <button type="submit">Preview</button>
+            </div>
           </div>
         ) : product === "beani" ? (
           <div className="which-product">
             <img src={beaniImg} style={{ width: "370px" }} />
-            <h3>Product price: € 11.30 </h3>
+            <div>
+              <h3>Product price: € 11.30 </h3>
+              <button type="submit">Preview</button>
+            </div>
           </div>
-        ) : null}
-        {product ? (
-          <Button variant="contained" type="submit">
-            Preview
-          </Button>
         ) : null}
       </form>
     </div>

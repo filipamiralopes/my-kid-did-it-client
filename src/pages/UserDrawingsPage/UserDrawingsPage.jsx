@@ -11,15 +11,14 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
   const { currentUser } = useContext(AuthContext);
 
   const handleDelete = async (id) => {
-    try {  
+    try {
       await axios.delete(`${SERVER_URL}/api/drawings/${id}`);
-      setDrawings(drawings.filter(drawing => drawing._id !== id));
-      console.log(`Drawing with id ${id} was deleted`)
+      setDrawings(drawings.filter((drawing) => drawing._id !== id));
+      console.log(`Drawing with id ${id} was deleted`);
     } catch (error) {
-      console.log( error);
-      
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     const fetchUserDrawings = async () => {
@@ -38,23 +37,35 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
   return (
     <div>
       {drawings.length === 0 ? (
-        <h1>
-          No drawings yet
-          <br />
+        <>
+          <h1>No drawings yet</h1>
           <Link to="/canvas">
-            <span>Start Drawing!</span>
+            <button>Start Drawing</button>
           </Link>
-        </h1>
+        </>
       ) : (
         <>
-          <h1>Your Kid Did It </h1>
-          <Link to="/canvas">
-            <span>+ Add new drawing</span>
-          </Link>
           <div className="drawings-container">
+            <div className="drawings-container-headers">
+              <h1>
+                Your kid did <br />
+                these
+              </h1>
+              <Link to="/canvas">
+                <button>+ Add new drawing</button>
+              </Link>
+            </div>
             {drawings &&
               drawings.map((oneDraw) => {
-                return <Drawingcard key={oneDraw._id} drawing={oneDraw} currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} handleDelete={handleDelete}/>;
+                return (
+                  <Drawingcard
+                    key={oneDraw._id}
+                    drawing={oneDraw}
+                    currentOrder={currentOrder}
+                    setCurrentOrder={setCurrentOrder}
+                    handleDelete={handleDelete}
+                  />
+                );
               })}
           </div>
         </>

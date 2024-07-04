@@ -1,12 +1,16 @@
 .order-form{
-    margin: 40px;
+    margin: 40px 40px 40px 80px;
 }
 
 .which-product{
     display: flex;
     justify-content: center;
+    text-align: left;
 }
-
-.which-product h3{
-    padding: 10px;
+.which-product > div{
+    margin-left: 10px;
+    width: 20%;
+}
+.tshirt{
+    padding-left: 60px;
 }

@@ -26,6 +26,13 @@ export default function Drawingcard({
   const parsedDate = new Date(drawing.createdAt);
   const nav = useNavigate();
 
+  const onDownload = (fileUrl, fileName) => {
+    const a = document.createElement("a");
+    a.href = fileUrl;
+    a.setAttribute("download", fileName);
+    a.click();
+  };
+
   const handleChooseProduct = (e) => {
     e.preventDefault();
     const requestBody = {
@@ -65,23 +72,36 @@ export default function Drawingcard({
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "inline-flex" }}>
-        <Button size="medium" onClick={handleChooseProduct}  style={{ fontSize: '18px' }} title="Order">
+        <Button
+          title="Order"
+          size="medium"
+          style={{ fontSize: "18px" }}
+          sx={{ color: "#242424" }}
+          onClick={handleChooseProduct}
+        >
           <FontAwesomeIcon icon={faCartShopping} />
         </Button>
-        <Button size="small" title="Download">
-          <a
-            href={drawing.file.replace("/upload/", "/upload/fl_attachment/")}
-            download
-          >
-            <Typography variant="body2" color="#1876D1" fontSize="18px">
-              <FontAwesomeIcon icon={faDownload} />
-            </Typography>
-          </a>
+        <Button
+          title="Download"
+          size="medium"
+          style={{ fontSize: "18px" }}
+          sx={{ color: "#242424" }}
+          onClick={() =>
+            onDownload(
+              drawing.file.replace("/upload/", "/upload/fl_attachment/"),
+              `${drawing.title}.png`
+            )
+          }
+        >
+          <FontAwesomeIcon icon={faDownload} />
         </Button>
-        <Button onClick={() => handleDelete(drawing._id)} title="Trash">
-          <Typography variant="body2" color="#C40617" fontSize="18px">
-            <FontAwesomeIcon icon={faTrash} />
-          </Typography>
+        <Button
+          title="Trash"
+          style={{ fontSize: "18px" }}
+          sx={{ color: "#C40617" }}
+          onClick={() => handleDelete(drawing._id)}
+        >
+          <FontAwesomeIcon icon={faTrash} />
         </Button>
       </CardActions>
     </Card>

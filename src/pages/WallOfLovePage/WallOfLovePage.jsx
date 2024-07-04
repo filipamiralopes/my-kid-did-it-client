@@ -45,7 +45,7 @@ const WallOfLovePage = ({ currentOrder }) => {
         {reviews.map((img) => {
           return <img src={img} key={img} style={{ width: "330px" }} />;
         })}
-      </div>
+      </div> 
     </div>
   );
 };
