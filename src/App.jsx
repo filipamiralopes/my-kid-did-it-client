@@ -17,6 +17,7 @@ import ToOrderPage from "./pages/ToOrderPage/ToOrderPage";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
 import WallOfLovePage from "./pages/WallOfLovePage/WallOfLovePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -35,78 +36,81 @@ function App() {
   }, [currentUser]);
 
   return (
-    <div className="App">
-      <Navbar profileUser={profileUser} />
+    <>
+      <div className="App">
+        <Navbar profileUser={profileUser} />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/profile"
-          element={
-            <IsPrivate>
-              <ProfilePage profileUser={profileUser} />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/drawings"
-          element={
-            <IsPrivate>
-              <UserDrawingsPage
-                currentOrder={currentOrder}
-                setCurrentOrder={setCurrentOrder}
-              />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/orders"
-          element={
-            <IsPrivate>
-              <UserOrdersPage />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/products"
-          element={
-            <IsPrivate>
-              <ToOrderPage
-                currentOrder={currentOrder}
-                setCurrentOrder={setCurrentOrder}
-              />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/preview"
-          element={
-            <IsPrivate>
-              <PreviewPage currentOrder={currentOrder} />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/wall-of-love"
-          element={
-            <IsPrivate>
-              <WallOfLovePage currentOrder={currentOrder} />
-            </IsPrivate>
-          }
-        />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route
-          path="/canvas"
-          element={
-            <IsPrivate>
-              <CanvasPage />
-            </IsPrivate>
-          }
-        />
-        <Route path="*" element={<NotFoundPage/>}/>
-      </Routes>
-    </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/profile"
+            element={
+              <IsPrivate>
+                <ProfilePage profileUser={profileUser} />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/drawings"
+            element={
+              <IsPrivate>
+                <UserDrawingsPage
+                  currentOrder={currentOrder}
+                  setCurrentOrder={setCurrentOrder}
+                />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <IsPrivate>
+                <UserOrdersPage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <IsPrivate>
+                <ToOrderPage
+                  currentOrder={currentOrder}
+                  setCurrentOrder={setCurrentOrder}
+                />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/preview"
+            element={
+              <IsPrivate>
+                <PreviewPage currentOrder={currentOrder} />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/wall-of-love"
+            element={
+              <IsPrivate>
+                <WallOfLovePage currentOrder={currentOrder} />
+              </IsPrivate>
+            }
+          />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/canvas"
+            element={
+              <IsPrivate>
+                <CanvasPage />
+              </IsPrivate>
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
   );
 }
 

@@ -1,0 +1,19 @@
+.footer {
+  color: #242424;
+  /* color: rgba(255, 255, 255, 0.87); */
+  min-height: 8vh;
+  /* box-shadow: 0px -1px 5px #242424; */
+  border-top: 1.4px solid #242424;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer a {
+  margin-top: 3px;
+  margin-left: 25px;
+}
+
+#rights-reserved {
+  font-weight: 500;
+}
