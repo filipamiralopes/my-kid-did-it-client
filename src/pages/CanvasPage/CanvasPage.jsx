@@ -71,6 +71,7 @@ function CanvasPage() {
   return (
     <>
       <div className="canvas-container">
+        <h1>Let the pencil flow</h1>
         <ReactSketchCanvas id="canvas"
           ref={canvas}
           style={styles}

@@ -49,6 +49,7 @@ button {
   transition: border-color 0.25s;
   box-shadow: 1px 3px #213547; 
   border: 1px solid #213547; 
+  text-transform: uppercase;
 }
 button:hover {
   border-color: #213547;
