@@ -8,21 +8,38 @@ function ProfilePage({ profileUser }) {
     return <Spinner />;
   }
 
-  const parsedDate = new Date(profileUser.createdAt).toDateString().slice(3)
+  const parsedDate = new Date(profileUser.createdAt).toDateString().slice(3);
 
   return (
-    <div className="profile">
-      <h1>Profile page of {profileUser?.username}</h1>
-      <img
-        src={profileUser?.userImage}
-        alt={profileUser?.username}
-        style={{ height: "250px" }}
-      />
-      <p><span id="make-it-bold">Username:</span> {profileUser.username}</p>
-      <p><span id="make-it-bold">Email:</span> {profileUser.email}</p>
-      <p><span id="make-it-bold">Joined:</span> {parsedDate}</p>
-      <p><span id="make-it-bold"># Drawings:</span> {profileUser.drawings}</p>
-      <p><span id="make-it-bold"># Orders:</span> {profileUser.orders}</p>
+    <div className="profile-page">
+      <div className="profile-headers">
+        <h1>{profileUser?.username.charAt(0).toUpperCase() + profileUser?.username.slice(1)}</h1>
+        <p>This is your space</p>
+      </div>
+      <div className="profile-container">
+        <img
+          src={profileUser?.userImage}
+          alt={profileUser?.username}
+          style={{ height: "200px" }}
+        />
+        <div className="profile-details">
+          <p>
+            <span id="make-it-bold">Username:</span> {profileUser.username}
+          </p>
+          <p>
+            <span id="make-it-bold">Email:</span> {profileUser.email}
+          </p>
+          <p>
+            <span id="make-it-bold">Joined:</span> {parsedDate}
+          </p>
+          <p>
+            <span id="make-it-bold"># Drawings:</span> {profileUser.drawings}
+          </p>
+          <p>
+            <span id="make-it-bold"># Orders:</span> {profileUser.orders}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
