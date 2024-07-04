@@ -37,8 +37,6 @@ function SignupPage() {
       });
   };
 
-  
-
   return (
     <div className="signup-page">
       <h1>Sign Up</h1>
@@ -68,7 +66,11 @@ function SignupPage() {
         <button type="submit">Sign Up</button>
       </form>
 
-      {errorMessage && <p style={{ color: "red" }}className="error-message">{errorMessage}</p>}
+      {errorMessage && (
+        <p style={{ color: "red" }} className="error-message">
+          {errorMessage}
+        </p>
+      )}
 
       <h4>Already have account?</h4>
       <Link to={"/login"}>

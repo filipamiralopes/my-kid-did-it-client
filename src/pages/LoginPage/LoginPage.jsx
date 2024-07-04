@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
-import {SERVER_URL} from "../../config"
+import { SERVER_URL } from "../../config";
 
 function LoginPage() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -41,21 +41,28 @@ function LoginPage() {
     <div className="login-page">
       <h1>Login</h1>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+      <div className="login-form">
+        <form onSubmit={handleLoginSubmit}>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmail}
+          />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePassword}
+          />
 
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>

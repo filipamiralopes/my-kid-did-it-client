@@ -68,13 +68,15 @@ function ResponsiveAppBar({ profileUser }) {
           {/* ABOUT US */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
+              <Link to="/about">
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                // onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "#242424", display: "block" }}
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 

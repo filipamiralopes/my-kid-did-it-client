@@ -18,6 +18,7 @@ import PreviewPage from "./pages/PreviewPage/PreviewPage";
 import WallOfLovePage from "./pages/WallOfLovePage/WallOfLovePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Footer from "./components/Footer/Footer";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -106,6 +107,7 @@ function App() {
               </IsPrivate>
             }
           />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
