@@ -7,12 +7,27 @@ import sean1 from "../../assets/sean1.png";
 import viggo1 from "../../assets/viggo1.png";
 import liv1 from "../../assets/liv1.png";
 import cate1 from "../../assets/cate1.png";
+import elijah2 from "../../assets/elijah2.png";
+import seanBean from "../../assets/sean-bean.png";
+import orlando2 from "../../assets/orlando2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
 import { Navigate } from "react-router-dom";
 
-const reviews = [elijah1, ian1, liv1, ian2, orlando1, sean1, viggo1, cate1];
+const reviews = [
+  ian1,
+  liv1,
+  orlando1,
+  elijah2,
+  cate1,
+  sean1,
+  viggo1,
+  ian2,
+  elijah1,
+  seanBean,
+  orlando2
+];
 
 const WallOfLovePage = ({ currentOrder }) => {
   return (
@@ -45,7 +60,7 @@ const WallOfLovePage = ({ currentOrder }) => {
         {reviews.map((img) => {
           return <img src={img} key={img} style={{ width: "330px" }} />;
         })}
-      </div> 
+      </div>
     </div>
   );
 };
