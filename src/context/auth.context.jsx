@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {SERVER_URL} from "../config"
+import { SERVER_URL } from "../config";
 
 const AuthContext = createContext();
 
@@ -18,10 +18,9 @@ const AuthContextWrapper = ({ children }) => {
   const authenticateUser = async () => {
     const tokenFromStorage = localStorage.getItem("authToken");
     try {
-      const { data } = await axios.get(
-        `${SERVER_URL}/auth/verify`,
-        { headers: { authorization: `Bearer ${tokenFromStorage}` } }
-      );
+      const { data } = await axios.get(`${SERVER_URL}/auth/verify`, {
+        headers: { authorization: `Bearer ${tokenFromStorage}` },
+      });
       // console.log("Response from verify: ", data);
       setCurrentUser(data.user);
       setIsLoading(false);
@@ -34,7 +33,17 @@ const AuthContextWrapper = ({ children }) => {
       nav("/");
     }
   };
-  const handleLogout = () => {
+  const handleLogout = async () => {
+
+    // clear unfulfilled orders
+    try {
+      await axios.delete(
+        `${SERVER_URL}/api/orders/user/${currentUser?._id}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
+
     nav("/");
     localStorage.removeItem("authToken");
     setCurrentUser(null);
