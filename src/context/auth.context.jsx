@@ -34,17 +34,17 @@ const AuthContextWrapper = ({ children }) => {
     }
   };
   const handleLogout = async () => {
+    localStorage.removeItem("authToken");
     nav("/");
+    setCurrentUser(null);
+    console.log("User was logged out successfully");
+
     // clear unfulfilled orders
     try {
       await axios.delete(`${SERVER_URL}/api/orders/user/${currentUser?._id}`);
     } catch (error) {
       console.log(error);
     }
-    localStorage.removeItem("authToken");
-    setCurrentUser(null);
-
-    console.log("User was logged out successfully");
   };
 
   useEffect(() => {
