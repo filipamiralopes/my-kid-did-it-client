@@ -44,11 +44,20 @@ function ResponsiveAppBar({ profileUser }) {
     nav("/login");
   };
 
+  const handleLogoutAsync = async () => {
+    try {
+      await handleLogout();
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   const handleProfileOptions = (e) => {
     e.preventDefault();
     setAnchorElUser(null); //?
+    console.log("Which event?: ", e.target.innerHTML)
     if (e.target.innerHTML === "Logout") {
-      handleLogout();
+      handleLogoutAsync();
     }
     if (e.target.innerHTML === "Your Profile") {
       nav("/profile");
