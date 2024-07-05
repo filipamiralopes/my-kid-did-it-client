@@ -1,23 +1,16 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
+import React, { useState, useEffect, useContext } from 'react';
+import { Card, CardMedia, CardContent, CardActions, Typography, Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTruck, faBan } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
+import { AuthContext } from "../../context/auth.context";
 import { SERVER_URL } from "../../config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTruck, faBan } from "@fortawesome/free-solid-svg-icons";
 
-export default function OrderCard({ order }) {
+const YourComponent = ({ order }) => {
   const { currentUser } = useContext(AuthContext);
+  const [isCancelled, setIsCancelled] = useState(false);
   const [drawing, setDrawing] = useState(null);
   const parsedDate = new Date(order.createdAt);
-  const nav = useNavigate();
 
   useEffect(() => {
     axios
@@ -28,8 +21,20 @@ export default function OrderCard({ order }) {
       .catch((err) => console.log(err));
   }, [currentUser]);
 
+  const handleCancel = () => {
+    setIsCancelled(true);
+    // Add any other logic you need for cancellation
+  };
+
   return (
-    <Card sx={{ maxWidth: 300, width: 300, p: 1}} >
+    <Card 
+      sx={{ 
+        maxWidth: 300, 
+        width: 300, 
+        p: 1,
+        backgroundColor: isCancelled ? 'darkgray' : 'inherit'
+      }} 
+    >
       <CardMedia
         component="img"
         alt={`${order.product}`}
@@ -48,16 +53,24 @@ export default function OrderCard({ order }) {
         </Typography>
       </CardContent>
       <CardActions sx={{ display: 'inline-flex' }}>
-        <Typography variant="body2" color="#1876D1">
-          DISPATCHED <FontAwesomeIcon icon={faTruck} />
+        <Typography 
+          variant="body2" 
+          color={isCancelled ? 'black' : '#1876D1'} 
+          sx={{ mt: "8px", mr: "8px" }}
+        >
+          {isCancelled ? 'ORDER CANCELED' : 'DISPATCHED'} 
+          {!isCancelled && <FontAwesomeIcon icon={faTruck} style={{ marginLeft: '5px' }} />}
         </Typography>
-        {/* <Button onClick={() => handleCancel()}> */}
-        <Button>
-          <Typography variant="body2" color="#C40617" >
-            Cancel <FontAwesomeIcon icon={faBan} />
-          </Typography>
-        </Button>
+        {!isCancelled && (
+          <Button onClick={handleCancel}>
+            <Typography variant="body2" color="#C40617" >
+              Cancel <FontAwesomeIcon icon={faBan} />
+            </Typography>
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
-}
+};
+
+export default YourComponent;
