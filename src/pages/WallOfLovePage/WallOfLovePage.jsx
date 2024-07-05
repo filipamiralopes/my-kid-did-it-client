@@ -10,6 +10,10 @@ import cate1 from "../../assets/cate1.png";
 import elijah2 from "../../assets/elijah2.png";
 import seanBean from "../../assets/sean-bean.png";
 import orlando2 from "../../assets/orlando2.png";
+import hobbits from "../../assets/hobbits.png";
+import eomer from "../../assets/eomer.png";
+import liv2 from "../../assets/liv2.png";
+import viggo2 from "../../assets/viggo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
@@ -24,9 +28,13 @@ const reviews = [
   sean1,
   viggo1,
   ian2,
+  viggo2,
+  hobbits,
   elijah1,
   seanBean,
-  orlando2
+  orlando2,
+  eomer,
+  liv2
 ];
 
 const WallOfLovePage = ({ currentOrder }) => {
