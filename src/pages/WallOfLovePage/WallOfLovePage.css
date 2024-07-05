@@ -12,7 +12,7 @@
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-row-gap: 20px;
   padding-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .wall-of-love h1 {
   text-align: left;

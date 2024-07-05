@@ -73,9 +73,7 @@ function SignupPage() {
       )}
 
       <h4>Already have account?</h4>
-      <Link to={"/login"}>
-        <button>Login</button>
-      </Link>
+      <Link to={"/login"}>Login</Link>
     </div>
   );
 }
