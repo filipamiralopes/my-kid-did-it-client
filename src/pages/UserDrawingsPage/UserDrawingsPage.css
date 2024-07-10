@@ -1,23 +1,50 @@
 .drawings-container {
   display: grid;
   justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-row-gap: 50px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0 50px 0;
 }
 
+/* Scale up transformation on hover */
 .drawings-container div:hover {
   /* the parent */
   transform: scale(1.02);
 }
-
 .drawings-container div:hover * {
   /* the children */
   transform: scale(1.02);
 }
-
-.drawings-container-headers{
+.drawings-container-headers {
   text-align: left;
+}
+
+/* Add a media query to change the amount of frames per row when the resolution is bigger than 760px */
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 760px) {
+  .drawings-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Portrait tablet to landscape and laptop desktop */
+@media (min-width: 1400px) {
+  .drawings-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* Medium screen */
+@media (min-width: 1800px) {
+  .drawings-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* Large screen */
+@media (min-width: 2200px) {
+  .drawings-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 }
