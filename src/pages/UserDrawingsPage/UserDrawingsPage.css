@@ -22,9 +22,9 @@
 /* Add a media query to change the amount of frames per row when the resolution is bigger than 760px */
 
 /* Landscape phone to portrait tablet */
-@media (min-width: 760px) {
+@media (min-width: 812px) {
   .drawings-container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
