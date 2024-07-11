@@ -80,8 +80,19 @@ function CanvasPage() {
             Use the tools on the right of the canvas to control pencil and
             background color.
           </p>
+          <div className="title-save">
+            <label>Title:</label>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleTitle}
+            />
+            <button onClick={handleUploadDrawing}>Save</button>
+            
+          </div>
+          {error && <p style={{ color: "red", fontSize: "16px", marginLeft: "15px" }}>{error}</p>}
         </div>
-        <div></div>
         <ReactSketchCanvas
           id="canvas"
           ref={canvas}
@@ -109,30 +120,17 @@ function CanvasPage() {
             onChange={handleCanvasColorChange}
           />
           <button
-            type="button"
             title="Undo"
-            className="btn btn-sm btn-outline-primary"
             onClick={handleUndoClick}
           >
             <FontAwesomeIcon icon={faUndo} />
           </button>
-          <button type="button" title="Redo" onClick={handleRedoClick}>
+          <button title="Redo" onClick={handleRedoClick}>
             <FontAwesomeIcon icon={faRedo} />
           </button>
-          <button type="button" title="Clear" onClick={handleResetClick}>
+          <button title="Clear" onClick={handleResetClick}>
             <FontAwesomeIcon icon={faRotate} />
           </button>
-          <div className="title-save">
-            <label>Title:</label>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={handleTitle}
-            />
-            <button onClick={handleUploadDrawing}>Save</button>
-          </div>
-          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
       </div>
     </>
