@@ -77,7 +77,7 @@ function CanvasPage() {
             flow
           </h1>
           <p>
-            Use the tools on the right of the canvas to control pencil and
+            Use the tools next to the canvas to control pencil and
             background color.
           </p>
           <div className="title-save">
@@ -97,15 +97,15 @@ function CanvasPage() {
           id="canvas"
           ref={canvas}
           style={styles}
-          width="350px"
-          height="350px"
+          width="70vh"
+          height="70vh"
           strokeColor={strokeColor}
           canvasColor={canvasColor === "#FFFFFF" ? "transparent" : canvasColor}
         />
         <div className="canvas-tools">
           <label htmlFor="color"></label>
           <input
-            title="Pencil color"
+            title="Stroke color"
             className="stroke-color"
             type="color"
             value={strokeColor}

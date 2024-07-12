@@ -19,7 +19,7 @@
   text-align: left;
 }
 
-/* Add a media query to change the amount of frames per row when the resolution is bigger than 812px */
+/* Add a media query to change the amount of frames per row when the resolution is bigger than 560px */
 
 /* Landscape phone to portrait tablet */
 @media (min-width: 560px) and (max-width: 1024px) {

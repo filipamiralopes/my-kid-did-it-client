@@ -9,11 +9,30 @@
   justify-content: space-between;
 }
 
+.footer p{
+  font-size: 12px;
+}
+
 .footer a {
   margin-top: 3px;
-  margin-left: 25px;
+  margin-left: 15px;
 }
 
 #rights-reserved {
   font-weight: 500;
+}
+
+/* Landscape tablet to laptop desktop*/
+@media (min-width: 1025px) {
+  .footer p{
+    font-size: 14px;
+    margin: 0 10px 0 10px;
+  }
+}
+/* Medium screen to large screens*/
+@media (min-width: 1800px) {
+  .footer p{
+    font-size: 18px;
+    margin: 0 45px 0 25px;
+  }
 }
