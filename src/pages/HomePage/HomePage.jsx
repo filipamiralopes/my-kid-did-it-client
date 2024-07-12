@@ -16,6 +16,10 @@ import shipOrderImg from "../../assets/ship-order.jpeg";
 
 const steps = [
   {
+    label: "Wear your child's art",
+    imgPath: dadImg,
+  },
+  {
     label: "Let your kiddo be a Picasso",
     imgPath: kidDrawingImg,
   },
@@ -26,11 +30,7 @@ const steps = [
   {
     label: "We produce and ship your order",
     imgPath: shipOrderImg,
-  },
-  {
-    label: "Enjoy your child's art",
-    imgPath: dadImg,
-  },
+  }
 ];
 
 const HomePage = () => {
