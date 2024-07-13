@@ -11,7 +11,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -57,23 +56,72 @@ function ResponsiveAppBar({ profileUser }) {
     <AppBar position="static" style={{ background: "#ffeda0" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* ABOUT US */}
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              sx={{
+                borderRadius: "50%",
+                border: "none",
+                padding: 0,
+                backgroundColor: "transparent",
+                boxShadow: "none",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                  boxShadow: "none",
+                },
+                "&:active": {
+                  boxShadow: "none",
+                  transform: "none",
+                },
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Link
+                    to="/about"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Link to="/about" key={page}>
-              <Button
-                key={page}
-                // onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "#242424", display: "block" }}
-              >
-                {page}
-              </Button>
+                <Button
+                  key={page}
+                  sx={{ my: 2, color: "#242424", display: "block" }}
+                >
+                  {page}
+                </Button>
               </Link>
             ))}
           </Box>
 
-          {/* MY KID DID IT */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
             <Typography
               variant="h6"
               noWrap
@@ -95,10 +143,11 @@ function ResponsiveAppBar({ profileUser }) {
             >
               MY KID DID IT
             </Typography>
-            <img src={logo} style={{width: "35px"}} />
+            <Link to="/">
+              <img src={logo} style={{ width: "35px" }} />
+            </Link>
           </Box>
 
-          {/* LOGIN */}
           <Box sx={{ flexGrow: 0 }}>
             {currentUser ? (
               <Tooltip title="Open settings">
@@ -113,7 +162,6 @@ function ResponsiveAppBar({ profileUser }) {
                 </Button>
               </Link>
             )}
-            {/* USER ICON DropDown Menu */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
