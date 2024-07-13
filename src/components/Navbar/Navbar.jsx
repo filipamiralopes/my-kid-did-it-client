@@ -1,4 +1,3 @@
-import "./Navbar.css"
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,9 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { useContext } from "react";
+import AdbIcon from "@mui/icons-material/Adb";
 import { AuthContext } from "../../context/auth.context";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 const pages = ["About Us"];
@@ -24,6 +24,7 @@ function ResponsiveAppBar({ profileUser }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { handleLogout, currentUser } = useContext(AuthContext);
+
   const nav = useNavigate();
 
   const handleOpenNavMenu = (event) => {
@@ -37,37 +38,18 @@ function ResponsiveAppBar({ profileUser }) {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (setting) => {
     setAnchorElUser(null);
-  };
 
-  const handleNavigateToLogin = () => {
-    nav("/login");
-  };
-
-  const handleLogoutAsync = async () => {
-    try {
-      await handleLogout();
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  };
-
-  const handleProfileOptions = (e) => {
-    e.preventDefault();
-    setAnchorElUser(null); //?
-    console.log("Which event?: ", e.target.innerHTML)
-    if (e.target.innerHTML === "Logout") {
-      handleLogoutAsync();
-    }
-    if (e.target.innerHTML === "Your Profile") {
+    // Navigate to specific pages based on the setting clicked
+    if (setting === "Your Profile") {
       nav("/profile");
-    }
-    if (e.target.innerHTML === "Your Drawings") {
+    } else if (setting === "Your Drawings") {
       nav("/drawings");
-    }
-    if (e.target.innerHTML === "Your Orders") {
+    } else if (setting === "Your Orders") {
       nav("/orders");
+    } else if (setting === "Logout") {
+      handleLogout();
     }
   };
 
@@ -116,7 +98,7 @@ function ResponsiveAppBar({ profileUser }) {
             <img src={logo} style={{width: "35px"}} />
           </Box>
 
-          {/* USER ICON / LOGIN */}
+          {/* LOGIN */}
           <Box sx={{ flexGrow: 0 }}>
             {currentUser ? (
               <Tooltip title="Open settings">
@@ -125,14 +107,13 @@ function ResponsiveAppBar({ profileUser }) {
                 </IconButton>
               </Tooltip>
             ) : (
-              <Button
-                onClick={handleNavigateToLogin}
-                sx={{ my: 2, color: "#242424", display: "block" }}
-              >
-                LOGIN
-              </Button>
+              <Link to="/login">
+                <Button sx={{ my: 2, color: "#242424", display: "block" }}>
+                  LOGIN
+                </Button>
+              </Link>
             )}
-            {/* USER ICON - DropDown Menu */}
+            {/* USER ICON DropDown Menu */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -147,13 +128,14 @@ function ResponsiveAppBar({ profileUser }) {
                 horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={() => handleCloseUserMenu(null)}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting}>
-                  <Typography textAlign="center" onClick={handleProfileOptions}>
-                    {setting}
-                  </Typography>
+                <MenuItem
+                  key={setting}
+                  onClick={() => handleCloseUserMenu(setting)}
+                >
+                  <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -163,4 +145,5 @@ function ResponsiveAppBar({ profileUser }) {
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;
