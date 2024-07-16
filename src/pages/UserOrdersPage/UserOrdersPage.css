@@ -1,11 +1,9 @@
 .orders-container {
-    display: grid;
-    justify-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-row-gap: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-row-gap: 50px;
+  margin: 50px 0 50px 0;
   }
   
   .orders-container div:hover {
@@ -18,3 +16,37 @@
     transform: scale(1.02);
   }
   
+  /* Landscape phone to portrait tablet */
+@media (min-width: 560px) and (max-width: 1024px) {
+  .orders-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Landscape tablet*/
+@media (min-width: 1025px) {
+  .orders-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Laptop desktop */
+@media (min-width: 1400px) {
+  .orders-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* Medium screen */
+@media (min-width: 1800px) {
+  .orders-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* Large screen */
+@media (min-width: 2200px) {
+  .orders-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
