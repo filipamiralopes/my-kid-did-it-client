@@ -2,14 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
+  padding: 40px 20px 20px;
+  box-sizing: border-box;
 }
 
 .signup-page h1 {
   color: #213547;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .signup-page form {
@@ -18,7 +21,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
 }
@@ -30,12 +33,12 @@
 }
 
 .signup-page input {
-  padding: 14px 16px;
+  padding: 12px 14px;
   border-radius: 6px;
   border: 1px solid #dddfe2;
   outline: none;
   margin-bottom: 12px;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .signup-page input:focus {
@@ -51,6 +54,7 @@
   margin-top: 20px;
   margin-bottom: 10px;
   color: #606770;
+  text-align: center;
 }
 
 .signup-page a {
@@ -66,4 +70,79 @@
   color: #ff0000;
   margin-top: 20px;
   text-align: center;
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 560px) and (max-width: 1024px) {
+  .signup-page form {
+    max-width: 400px;
+  }
+  
+  .signup-page h1 {
+    font-size: 2.2rem;
+  }
+
+  .signup-page {
+    padding-top: 60px;
+  }
+}
+
+/* Landscape tablet */
+@media (min-width: 1025px) {
+  .signup-page form {
+    max-width: 450px;
+  }
+  
+  .signup-page h1 {
+    font-size: 2.5rem;
+  }
+  
+  .signup-page {
+    padding-top: 80px;
+  }
+}
+
+/* Laptop desktop */
+@media (min-width: 1400px) {
+  .signup-page form {
+    max-width: 500px;
+  }
+  
+  .signup-page h1 {
+    font-size: 2.8rem;
+  }
+  
+  .signup-page {
+    padding-top: 80px;
+  }
+}
+
+/* Medium screen */
+@media (min-width: 1800px) {
+  .signup-page form {
+    max-width: 550px;
+  }
+  
+  .signup-page h1 {
+    font-size: 3rem;
+  }
+  
+  .signup-page {
+    padding-top: 150px;
+  }
+}
+
+/* Large screen */
+@media (min-width: 2200px) {
+  .signup-page form {
+    max-width: 600px;
+  }
+  
+  .signup-page h1 {
+    font-size: 3.2rem;
+  }
+  
+  .signup-page {
+    padding-top: 150px;
+  }
 }
