@@ -39,7 +39,7 @@ const reviews = [
 
 const WallOfLovePage = ({ currentOrder }) => {
   return (
-    <div>
+    <div className="wall-of-love-page">
       <div className="order-on-the-way">
         <h2>Your order is on the way!</h2>
         <FontAwesomeIcon icon={faTruckFast} fontSize={"130px"} />
