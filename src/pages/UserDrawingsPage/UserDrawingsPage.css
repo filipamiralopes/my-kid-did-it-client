@@ -7,16 +7,54 @@
 }
 
 /* Scale up transformation on hover */
-.drawings-container div:hover {
+.drawings-container div:not(.drawings-container-headers):hover {
   /* the parent */
   transform: scale(1.02);
 }
-.drawings-container div:hover * {
+.drawings-container div:not(.drawings-container-headers):hover * {
   /* the children */
   transform: scale(1.02);
 }
 .drawings-container-headers {
   text-align: left;
+  margin-left: 30px;
+}
+.drawings-container-headers, 
+.drawings-container-headers * {
+  transform: none !important;
+}
+
+.add-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+input[type="file"] {
+  display: none;
+}
+.choose-file {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #2a83d1;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  box-shadow: 1px 3px #213547;
+  border: 1px solid #213547;
+  text-transform: uppercase;
+}
+.choose-file:hover {
+  cursor: pointer;
+}
+
+body .choose-file:active {
+  box-shadow: 0 5px #213547;
+  transform: translateY(4px);
 }
 
 /* Add a media query to change the amount of frames per row when the resolution is bigger than 560px */

@@ -5,6 +5,8 @@ import Drawingcard from "../../components/DrawingCard/DrawingCard";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
 
 function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
   const [drawings, setDrawings] = useState([]);
@@ -34,6 +36,29 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
     fetchUserDrawings();
   }, [currentUser]);
 
+  const handleUploadFile = async (e) => {
+    e.preventDefault();
+
+    const file = e.target.files[0];
+    const fileFormData = new FormData();
+    fileFormData.append("title", "uploaded"); // TODO
+    fileFormData.append("fileUrl", file);
+    fileFormData.append("author", currentUser._id);
+
+    try {
+      await axios.post(`${SERVER_URL}/api/drawings/upload-file`, fileFormData);
+      // Refresh the drawings list after upload
+      const { data } = await axios.get(
+        `${SERVER_URL}/api/drawings/user/${currentUser._id}`
+      );
+      setDrawings(data);
+    } catch (error) {
+      const errorDescription =
+        error.response?.data?.errorMessage || error.message;
+      setErrorMessage(errorDescription);
+    }
+  };
+
   return (
     <div>
       {drawings.length === 0 ? (
@@ -51,9 +76,18 @@ function UserDrawingsPage({ currentOrder, setCurrentOrder }) {
                 Your kid did <br />
                 these
               </h1>
-              <Link to="/canvas">
-                <button>+ Add new drawing</button>
-              </Link>
+              <div className="add-buttons">
+                <Link to="/canvas">
+                  <button>+ Add new drawing</button>
+                </Link>
+                <div>
+                  <label className="choose-file">
+                    <input type="file" name="file" onChange={handleUploadFile} />
+                    <FontAwesomeIcon icon={faUpload} />
+                    &nbsp; Or upload a file
+                  </label>
+                </div>
+              </div>
             </div>
             {drawings &&
               drawings.map((oneDraw) => {
