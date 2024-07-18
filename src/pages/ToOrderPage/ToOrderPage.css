@@ -1,16 +1,150 @@
-.order-form{
-    margin: 40px 40px 40px 80px;
+.order-form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px 0;
 }
 
-.which-product{
-    display: flex;
-    justify-content: center;
+.order-form form {
+  width: 100%;
+  max-width: 300px;
+}
+
+.which-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.which-product img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.which-product > div {
+  width: 100%;
+  text-align: center;
+}
+
+.which-product h3 {
+  margin-bottom: 10px;
+}
+
+.which-product button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 560px) and (max-width: 1024px) {
+  .order-form {
+    margin: 30px;
+  }
+
+  .order-form form {
+    max-width: 400px;
+  }
+
+  .which-product img {
+    max-width: 80%;
+  }
+
+  .which-product > div {
+    white-space: nowrap;
+  }
+}
+
+/* Landscape tablet */
+@media (min-width: 1025px) {
+  .order-form {
+    margin: 80px 40px 40px 40px;
+    min-height: 100vh;
+  }
+
+  .which-product {
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+  }
+
+  .which-product img {
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+
+  .which-product > div {
+    width: auto;
     text-align: left;
+    white-space: nowrap;
+  }
+
+  .tshirt {
+    padding-left: 30px;
+  }
+
+  .which-product button {
+    width: auto;
+    padding: 10px 20px;
+  }
 }
-.which-product > div{
-    margin-left: 10px;
-    width: 20%;
+
+/* Laptop desktop */
+@media (min-width: 1400px) {
+  .order-form {
+    margin: 60px;
+  }
+
+  .order-form form {
+    max-width: 450px;
+  }
+
+  .which-product img {
+    margin-right: 50px;
+  }
+
+  .tshirt {
+    padding-left: 40px;
+  }
 }
-.tshirt{
+
+/* Medium screen */
+@media (min-width: 1800px) {
+  .order-form {
+    margin: 80px;
+  }
+
+  .order-form form {
+    max-width: 500px;
+  }
+
+  .which-product img {
+    margin-right: 70px;
+  }
+
+  .tshirt {
+    padding-left: 50px;
+  }
+}
+
+/* Large screen */
+@media (min-width: 2200px) {
+  .order-form {
+    margin: 100px;
+  }
+
+  .order-form form {
+    max-width: 550px;
+  }
+
+  .which-product img {
+    margin-right: 90px;
+  }
+
+  .tshirt {
     padding-left: 60px;
+  }
 }
