@@ -1,9 +1,140 @@
-.not-found-page{
-    min-height: 100vh;
-    margin-top: 50px;
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
 }
 
-.not-found-page h1{
-    padding: 0;
-    margin: 0;
+.not-found-page h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 2em;
+}
+
+.not-found-page img {
+  width: 120px;
+  max-width: 100%;
+  margin: 10px 0;
+}
+
+.not-found-page h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.not-found-page button {
+  padding: 5px 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 560px) and (max-width: 1024px) {
+  .not-found-page h1 {
+    font-size: 2.2em;
+  }
+
+  .not-found-page img {
+    width: 140px;
+  }
+
+  .not-found-page h2 {
+    font-size: 1.3em;
+  }
+
+  .not-found-page button {
+    font-size: 1em;
+  }
+}
+
+/* Landscape tablet */
+@media (min-width: 1025px) {
+  .not-found-page h1 {
+    font-size: 2.4em;
+  }
+
+  .not-found-page img {
+    width: 160px;
+  }
+
+  .not-found-page h2 {
+    font-size: 1.4em;
+  }
+
+  .not-found-page button {
+    font-size: 1.1em;
+  }
+}
+
+/* Laptop desktop */
+@media (min-width: 1400px) {
+  .not-found-page {
+    min-height: 70vh;
+  }
+
+  .not-found-page h1 {
+    font-size: 2.6em;
+  }
+
+  .not-found-page img {
+    width: 180px;
+  }
+
+  .not-found-page h2 {
+    font-size: 1.5em;
+  }
+
+  .not-found-page button {
+    font-size: 1.2em;
+  }
+}
+
+/* Medium screen */
+@media (min-width: 1800px) {
+  .not-found-page {
+    min-height: 50vh;
+  }
+
+  .not-found-page h1 {
+    font-size: 2.8em;
+  }
+
+  .not-found-page img {
+    width: 200px;
+  }
+
+  .not-found-page h2 {
+    font-size: 1.6em;
+  }
+
+  .not-found-page button {
+    font-size: 1.3em;
+  }
+}
+
+/* Large screen */
+@media (min-width: 2200px) {
+  .not-found-page {
+    min-height: 50vh;
+  }
+
+  .not-found-page h1 {
+    font-size: 3em;
+  }
+
+  .not-found-page img {
+    width: 220px;
+  }
+
+  .not-found-page h2 {
+    font-size: 1.7em;
+  }
+
+  .not-found-page button {
+    font-size: 1.4em;
+  }
 }
