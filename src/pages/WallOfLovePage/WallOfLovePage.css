@@ -1,33 +1,133 @@
+.wall-of-love-page {
+  padding: 20px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 .order-on-the-way {
   min-height: 50vh;
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
-.wall-of-love {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-row-gap: 20px;
-  padding-top: 20px;
-  margin-bottom: 50px;
+
+.order-on-the-way h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
-.wall-of-love h1 {
-  text-align: left;
-  padding: 0;
-  margin: 5px 0;
-  height: 300px;
-  width: 330px;
-  line-height: 1.5;
-  width: 300px;
-  height: 295px;
-  padding: 20px;
+
+.order-on-the-way svg {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.order-on-the-way p {
+  margin-bottom: 20px;
+}
+
+.order-on-the-way button {
+  padding: 10px 20px;
 }
 
 hr {
-  width: 60%;
-  margin-bottom: 60px;
+  width: 80%;
+  margin: 40px auto;
+}
+
+.wall-of-love {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  padding-top: 20px;
+  margin-bottom: 50px;
+}
+
+.wall-of-love h1 {
+  text-align: center;
+  padding: 20px;
+  margin: 5px 0;
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+
+.wall-of-love img {
+  width: 100%;
+  max-width: 330px;
+  height: auto;
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 560px) and (max-width: 1024px) {
+  .wall-of-love {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wall-of-love h1 {
+    grid-column: span 2;
+    text-align: center;
+    font-size: 2.5rem;
+  }
+}
+
+/* Landscape tablet and above */
+@media (min-width: 1025px) {
+  .wall-of-love-page {
+    padding: 40px;
+  }
+
+  .order-on-the-way {
+    margin-top: 50px;
+  }
+
+  .order-on-the-way h2 {
+    font-size: 2rem;
+  }
+
+  .order-on-the-way svg {
+    font-size: 130px;
+  }
+
+  hr {
+    width: 60%;
+    margin: 60px auto;
+  }
+
+  .wall-of-love {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  .wall-of-love h1 {
+    text-align: left;
+    padding: 20px 20px 20px 40px;
+    margin: 5px 0;
+    height: auto;
+    width: 100%;
+    line-height: 1.5;
+    font-size: 2.5rem;
+  }
+
+  .wall-of-love img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+}
+
+/* Large desktop screens */
+@media (min-width: 1400px) {
+  .wall-of-love {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .wall-of-love h1 {
+    padding: 20px 20px 20px 100px;
+  }
 }
