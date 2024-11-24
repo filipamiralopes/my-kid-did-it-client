@@ -2,5 +2,5 @@
 
 # My Kid Did It 
 
-## Visit the website
+## Visit the website:
 https://my-kid-did-it.netlify.app/
